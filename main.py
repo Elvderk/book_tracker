@@ -96,6 +96,29 @@ def author_statistics(books):
     for author, count in authors.items():
         print(f"{author}: {count} книг")
 
+# Удаление книги
+
+def delete_book(books):
+    if not books:
+        print("Список книг пуст")
+        return
+
+    show_books(books)
+
+    try:
+        index = int(input("Введите номер книги для удаления: ")) - 1
+
+        if 0 <= index < len(books):
+            removed = books.pop(index)
+            save_books(books)
+            print(f"Удалена книга: {removed['title']}")
+        else:
+            print("Неверный номер")
+
+    except ValueError:
+        print("Введите число")
+
+
 
 if __name__ == "__main__":
     main()
